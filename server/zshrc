@@ -1,0 +1,83 @@
+# ==================================================================
+# .zshrc for server
+# ==================================================================
+#export LANG=C
+export SHELL=zsh
+
+# basic settings
+umask 022
+bindkey -e
+limit coredumpsize 0
+
+# PATH1
+PATH1=.:~/bin:/usr/local/bin
+
+# PATH2 (system path)
+PATH2=/usr/bin:/bin:/usr/sbin:/sbin
+
+# build path info
+PATH=$PATH1:$PATH2
+
+# prompt
+PS1="%B%F{yellow}%m%f%F{cyan}[%c]%f:%b"
+#RPROMPT=%Bzsh%b
+#setopt transient_rprompt
+#setopt prompt_subst
+
+# complete
+fpath=(~/.zsh/completion $fpath)
+autoload -U compinit
+compinit -u
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' format '%B%d%b'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' group-name ''
+
+setopt list_packed
+setopt list_types
+setopt auto_param_keys
+setopt auto_param_slash
+
+# direcotry operations
+setopt auto_cd
+setopt autopushd
+setopt pushd_ignore_dups
+setopt mark_dirs
+
+# history
+HISTFILE=~/.zsh_hist
+HISTSIZE=100000
+SAVEHIST=100000
+setopt hist_ignore_dups
+setopt hist_reduce_blanks
+setopt share_history
+
+#setopt EXTENDED_HISTORY
+autoload history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
+# aliases
+alias ls="ls -FN --group-directories-first --color=always"
+alias ll='ls -lhN --group-directories-first --color=always'
+alias lu='ls -luhN --group-directories-first --color=always'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+alias grep='grep --color'
+alias less='less -i -R --tab=2'
+alias h='history'
+#
+alias date='date "+%c"'
+la() { last -a | head -20}
+alias nless='less --LINE-NUMBERS'
+alias qless='less -X'
+alias pps='ps -f -u `whoami`'
+pss() { ps aux | grep $1 |grep -v grep}
+alias pur='\rm *~'
+alias qpur='\rm .*~'
+alias qfind='find . -name'
+alias sux=su
+alias bdu='du -s --block-size=1024'

@@ -1,0 +1,19 @@
+# ==================================================================
+# .zlogin for server
+# ==================================================================
+export SHELL=zsh
+
+# man path
+export MANPATH=/usr/share/man
+
+# color setting
+eval `dircolors -b ~/.dir_colors`
+
+# misc
+export EDITOR=vi
+export PAGER='less -X'
+export VISUAL=view
+
+# git
+export GIT_EDITOR=vi
+export GIT_PAGER=less

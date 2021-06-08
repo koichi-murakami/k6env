@@ -1,0 +1,17 @@
+".vimrc
+"
+""set number
+"set ruler
+""set title
+
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+set smartindent
+
+"set list
+""set backspace=indent,eol,sart
+
+set laststatus=2
+set showmode
