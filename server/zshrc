@@ -24,6 +24,9 @@ PS1="%B%F{yellow}%m%f%F{cyan}[%c]%f:%b"
 #setopt transient_rprompt
 #setopt prompt_subst
 
+# color setting
+eval `dircolors -b ~/.dir_colors`
+
 # complete
 fpath=(~/.zsh/completion $fpath)
 autoload -U compinit
